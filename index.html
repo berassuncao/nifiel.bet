@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nifiel Bet - Cassino Virtual</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #4b006e, #000000);
+      color: white;
+    }
+    header {
+      background-color: rgba(0,0,0,0.8);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 900;
+      font-size: 28px;
+    }
+    nav button {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      margin-left: 10px;
+      padding: 7px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    nav button:hover {
+      background-color: white;
+      color: #4b006e;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    section {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    section h2 {
+      margin-top: 0;
+      font-size: 24px;
+      font-weight: 800;
+      border-bottom: 2px solid #e0a800;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+    }
+
+    button.play-btn {
+      background-color: #e0a800;
+      border: none;
+      color: #4b006e;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+    button.play-btn:hover {
+      background-color: #c79500;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .balance {
+      font-weight: 900;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .profile-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid #e0a800;
+    }
+
+    /* Chat Simples */
+    #chat {
+      background: #2d2d2d;
+      border-radius: 10px;
+      padding: 15px;
+      max-height: 250px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+    #chat p {
+      margin: 5px 0;
+    }
+    #chat-input {
+      width: calc(100% - 80px);
+      padding: 8px;
+      border-radius: 6px;
+      border: none;
+      margin-right: 5px;
+      font-size: 14px;
+    }
+    #send-btn {
+      padding: 8px 15px;
+      background-color: #e0a800;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #4b006e;
+      transition: background-color 0.3s ease;
+    }
+    #send-btn:hover {
+      background-color: #c79500;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎰 Nifiel Bet</h1>
+  <nav>
+    <button onclick="showSection('games')">Jogos</button>
+    <button onclick="showSection('profile')">Perfil</button>
+    <button onclick="showSection('tournaments')">Torneios</button>
+    <button onclick="showSection('chat')">Chat</button>
+  </nav>
+</header>
+
+<main>
+  <!-- Jogos -->
+  <section id="games" style="display:block;">
+    <h2>Jogos Disponíveis</h2>
+    <ul>
+      <li>
+        Slot da Sorte
+        <button class="play-btn" onclick="alert('Jogando Slot da Sorte! Boa sorte! 🎰')">Jogar</button>
+      </li>
+      <li>
+        Roleta Europeia
+        <button class="play-btn" onclick="alert('Girando a Roleta! Boa sorte! 🎡')">Jogar</button>
+      </li>
+      <li>
+        Poker Texas Hold'em
+        <button class="play-btn" onclick="alert('Entrando no Poker! Boa sorte! 🃏')">Jogar</button>
+      </li>
+      <li>
+        Caça-níquel Supremo
+        <button class="play-btn" onclick="alert('Jogando Caça-níquel Supremo! 🎰')">Jogar</button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Perfil -->
+  <section id="profile" style="display:none;">
+    <h2>Meu Perfil</h2>
+    <img class="profile-img" src="https://i.pravatar.cc/100" alt="Avatar do usuário" />
+    <p><strong>Usuário:</strong> NifielGamer</p>
+    <p class="balance"><strong>Saldo:</strong> $1.000,00</p>
+    <button class="play-btn" onclick="manageBalance('deposit')">Depositar</button>
+    <button class="play-btn" onclick="manageBalance('withdraw')">Sacar</button>
+  </section>
+
+  <!-- Torneios -->
+  <section id="tournaments" style="display:none;">
+    <h2>Torneios</h2>
+    <ul>
+      <li>Grande Prêmio de Poker - 25/06/2025 - Prêmio: $10.000</li>
+      <li>Roleta Supremacy - 30/06/2025 - Prêmio: $5.000</li>
+      <li>Campeonato de Blackjack - 05/07/2025 - Prêmio: $7.500</li>
+    </ul>
+  </section>
+
+  <!-- Chat -->
+  <section id="chat" style="display:none;">
+    <h2>Chat ao Vivo</h2>
+    <div id="chat"></div>
+    <input id="chat-input" placeholder="Digite sua mensagem..." />
+    <button id="send-btn">Enviar</button>
+  </section>
+</main>
+
+<script>
+  // Função para mostrar/ocultar seções
+  function showSection(id) {
+    const sections = ['games', 'profile', 'tournaments', 'chat'];
+    sections.forEach(sectionId => {
+      document.getElementById(sectionId).style.display = (sectionId === id) ? 'block' : 'none';
+    });
+  }
+
+  // Gerenciar saldo fictício
+  let balance = 1000;
+  const balanceElem = document.querySelector('.balance');
+
+  function manageBalance(action) {
+    let amount = prompt(`Quanto deseja ${action === 'deposit' ? 'depositar' : 'sacar'}?`, "0");
+    amount = Number(amount);
+    if (isNaN(amount) || amount <= 0) {
+      alert('Por favor, insira um valor válido.');
+      return;
+    }
+    if (action === 'withdraw' && amount > balance) {
+      alert('Saldo insuficiente!');
+      return;
+    }
+    balance = action === 'deposit' ? balance + amount : balance - amount;
+    balanceElem.textContent = `Saldo: $${balance.toFixed(2)}`;
+    alert(`Saldo atualizado: $${balance.toFixed(2)}`);
+  }
+
+  // Chat simples sem backend (local)
+  const chatDiv = document.getElementById('chat');
+  const chatInput = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('send-btn');
+
+  sendBtn.addEventListener('click', () => {
+    const message = chatInput.value.trim();
+    if (message === '') return;
+    const p = document.createElement('p');
+    p.textContent = `Você: ${message}`;
+    chatDiv.appendChild(p);
+    chatInput.value = '';
+    chatDiv.scrollTop = chatDiv.scrollHeight;
+  });
+
+  // Enter também envia mensagem
+  chatInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') sendBtn.click();
+  });
+</script>
+
+</body>
+</html>
